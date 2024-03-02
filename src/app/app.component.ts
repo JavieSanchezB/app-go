@@ -14,7 +14,7 @@ import { MatSelectChange } from '@angular/material/select';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,MatCardModule, MatRadioModule, FormsModule, MatSliderModule, MatProgressSpinnerModule,MatInputModule,MatFormFieldModule,MatSelectModule],
+  imports: [RouterOutlet,MatCardModule, MatRadioModule, FormsModule, MatProgressSpinnerModule,MatSliderModule,MatInputModule,MatFormFieldModule,MatSelectModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 
@@ -62,5 +62,31 @@ export class AppComponent {
         }
         break;
     }
+    this.updateProgressBarColor();
   }
+  updateProgressBarColor(): void {
+    // Obtén el elemento de la barra de progreso
+    const progressBar = document.querySelector('.mat-progress-spinner-svg-circle') as SVGCircleElement;
+  
+    // Obten la variable 'color' actual
+    const currentColor = this.color;
+  
+    // Realiza la lógica de cambio de color basada en el valor de 'color'
+    switch (currentColor) {
+      case 'primary':
+        progressBar.style.stroke = 'blue';
+        break;
+      case 'accent':
+        progressBar.style.stroke = 'green';
+        break;
+      case 'warn':
+        progressBar.style.stroke = 'red';
+        break;
+      default:
+        // Puedes establecer un color predeterminado o no hacer nada si el color no coincide con los casos anteriores
+        break;
+    }
+  
+  }
+
 }
